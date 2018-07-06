@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/samlikezham/mongoproject/issues"
   },
-  "homepage": "https://github.com/samlikezham/mongoproject#readme"
+  "homepage": "https://github.com/samlikezham/mongoproject#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
