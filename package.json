@@ -1,0 +1,19 @@
+{
+  "name": "mongoproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samlikezham/mongoproject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samlikezham/mongoproject/issues"
+  },
+  "homepage": "https://github.com/samlikezham/mongoproject#readme"
+}
