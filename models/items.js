@@ -6,7 +6,7 @@ const itemSchema = new mongoose.Schema ({
 	description: String,
 	img: String,
 	price: Number,
-	quantity: Number
+	qty: Number
 });
 
 const Item = mongoose.model('Item', itemSchema);

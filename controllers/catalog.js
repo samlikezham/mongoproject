@@ -17,6 +17,7 @@ const methodOverride = require('method-override');
 // 	});
 // });
 
+// accessed catalog index route
 router.get('/', (req, res) => {
 	Item.find({}, (err, allItems) => {
 		res.render('accessed/index.ejs', {
@@ -24,6 +25,24 @@ router.get('/', (req, res) => {
 			currentUser: req.session.currentUser
 		});
 	});
+});
+
+//show route
+router.get('/:id', (req, res) => {
+	Item.findById(req.params.id, (err, foundItem) => {
+		res.render('accessed/show.ejs', {
+			items: foundItem
+		});
+	});
+});
+
+//buy route
+router.put('/:id/buy', (req, res) => {
+	Item.update(
+		{_id: req.params.id}, 
+		{$inc: {qty: -1}}, (error, foundProduct) => {
+			res.redirect('/catalog/' + req.params.id)
+		});
 });
 
 
