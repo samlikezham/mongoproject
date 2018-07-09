@@ -3,31 +3,61 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const mongoose = require('mongoose');
-const mongoUri =  process.env.MONGODB_URI || 'mongodb://localhost:27017/grocery_app_dev';
-const Item = require('./models/items.js')
+const mongoUri =  process.env.MONGODB_URI || 'mongodb://localhost:27017/mens_catalog';
+const Item = require('./models/items.js');
+const User = require('./models/users.js');
+
+const session = require('express-session');
+const methodOverride = require('method-override');
 
 
+// MIDDLEWARE
+//body parser
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+// static files middleware
+app.use(express.static('public'));
+// express-session middleware
+app.use(session({
+  secret: "feedmeseymour", //some random string
+  resave: false,
+  saveUninitialized: false
+}));
+//method override
+app.use(methodOverride('_method'));
+
+
+// CONTROLLERS
+//main catalog
+const catalogController = require('./controllers/catalog.js');
+app.use('/catalog', catalogController);
+// user controller
+const usersController = require('./controllers/users.js');
+app.use('/users', usersController);
+// sessions controller
+const sessionsController = require('./controllers/sessions.js');
+app.use('/sessions', sessionsController);
 
 
 app.get('/seed', async (req, res) => {
   const newItem =
     [
       {
-        name: 'Beans',
-        description: 'A small pile of beans. Buy more beans for a big pile of beans.',
-        img: 'https://cdn3.bigcommerce.com/s-a6pgxdjc7w/products/1075/images/967/416130__50605.1467418920.1280.1280.jpg?c=2',
+        name: 'Top',
+        description: 'Men\'s polo top',
+        img: 'https://i.imgur.com/mdFVn1p.jpg',
         price: 5,
         qty: 99
       }, {
-        name: 'Bones',
-        description: 'It\'s just a bag of bones.',
-        img: 'http://bluelips.com/prod_images_large/bones1.jpg',
+        name: 'Jeans',
+        description: 'Men\'s denim',
+        img: 'https://i.imgur.com/R3AKVgt.jpg',
         price: 25,
         qty: 0
       }, {
-        name: 'Bins',
-        description: 'A stack of colorful bins for your beans and bones.',
-        img: 'http://www.clipartbest.com/cliparts/9cz/rMM/9czrMMBcE.jpeg',
+        name: 'Shoes',
+        description: 'Men\'s shoes',
+        img: 'https://i.imgur.com/Hlt2pwL.jpg',
         price: 7000,
         qty: 1
       }
@@ -43,8 +73,10 @@ app.get('/seed', async (req, res) => {
 
 
 
-app.get('/', (req, res) => {
-	res.render('index.ejs');
+app.get('/', (req, res)=>{
+    res.render('index.ejs', {
+        currentUser: req.session.currentUser
+    });
 });
 
 
