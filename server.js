@@ -39,6 +39,7 @@ const sessionsController = require('./controllers/sessions.js');
 app.use('/sessions', sessionsController);
 
 
+// sample seed items
 app.get('/seed', async (req, res) => {
   const newItem =
     [
