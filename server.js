@@ -6,10 +6,18 @@ const mongoose = require('mongoose');
 const mongoUri =  process.env.MONGODB_URI || 'mongodb://localhost:27017/mens_catalog';
 const Item = require('./models/items.js');
 const User = require('./models/users.js');
+const cookieParser = require('cookie-parser');
+const expressHbs = require('express-handlebars');
+
 
 const session = require('express-session');
 const methodOverride = require('method-override');
+// allows us to store data from our sessions
+const MongoStore = require('connect-mongo')(session);
 
+// view engine
+// app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
+// app.set('view engine', 'hbs');
 
 // MIDDLEWARE
 //body parser
@@ -17,18 +25,24 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 // static files middleware
 app.use(express.static('public'));
+// cookie parser
+app.use(cookieParser());
 // express-session middleware
 app.use(session({
-  secret: "feedmeseymour", //some random string
+  secret: "feedmeseymour",
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  // store session 
+  store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  // 180 min multiply by 60 seconds and 1000 milliseconds - session expires after 3 hrs
+  cookie: { maxAge: 180 * 60 * 1000 }
 }));
 //method override
 app.use(methodOverride('_method'));
 
 
 // CONTROLLERS
-//main catalog
+// main catalog
 const catalogController = require('./controllers/catalog.js');
 app.use('/catalog', catalogController);
 // user controller
@@ -37,6 +51,12 @@ app.use('/users', usersController);
 // sessions controller
 const sessionsController = require('./controllers/sessions.js');
 app.use('/sessions', sessionsController);
+// admin user controller
+const usersAdminController = require('./controllers/adminusers.js');
+app.use('/users-admin', usersAdminController);
+// admin sessions controller
+const sessionsAdminController = require('./controllers/adminsessions.js');
+app.use('/sessions-admin', sessionsAdminController);
 
 
 // sample seed items
@@ -74,10 +94,18 @@ app.get('/seed', async (req, res) => {
 
 
 
+// main login screen (customer)
 app.get('/', (req, res)=>{
     res.render('index.ejs', {
         currentUser: req.session.currentUser
     });
+});
+
+// main login screen (admin)
+app.get('/admin', (req, res) => {
+	res.render('../views/admin/index.ejs', {
+		currentAdmin: req.session.currentAdmin
+	});
 });
 
 //FIX THIS - Should redirect back to home if user is not logged in

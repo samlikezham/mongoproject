@@ -2,10 +2,13 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="/main.css">
+	<% include ../partials/head.ejs %>
 	<title></title>
 </head>
 <body>
+
+	<% include ../partials/nav.ejs %>
+
 	<h1>
     <% if (currentUser) { %>
         Welcome <%=currentUser.username%>!
@@ -13,14 +16,6 @@
         Welcome!
     <% } %>
 	</h1>
-
-	<% if (currentUser) { %>
-    <nav>
-        <form action="/sessions?_method=DELETE" method="POST">
-            <input type="submit" value="Logout"/>
-        </form>
-    </nav>
-	<% } %>
 
 	<div class="container">
     <h1>Catalog</h1>

@@ -2,13 +2,16 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="/main.css">
+	<% include ../partials/head.ejs %>
 	<title></title>
 </head>
 <body>
+	<% include ../partials/nav.ejs %>
+
 	<nav>
 		<a href="/catalog">Back to Home</a>
-	</nav><br/><br/>
+	</nav>
+
 
 	<div class="container">
 		<h3><%= items.name %><br/></h3>
@@ -23,7 +26,7 @@
 
 	<% if (items.qty > 0){ %>
           <form action='/catalog/<%=items.id%>/buy?_method=PUT' method='POST'>
-            <button>Add To Cart</button>
+          	<a href="/catalog/add-to-cart/<%=items.id%>" class="btn" role="button">Add To Cart</a>
           </form>
           <% } else { %>
             <button>Out of Stock</button>
