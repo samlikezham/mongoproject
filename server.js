@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const mongoUri =  process.env.MONGODB_URI || 'mongodb://localhost:27017/mens_catalog';
 const Item = require('./models/items.js');
 const User = require('./models/users.js');
+const Admin = require('./models/adminusers.js');
 const cookieParser = require('cookie-parser');
 const expressHbs = require('express-handlebars');
 
@@ -97,7 +98,8 @@ app.get('/seed', async (req, res) => {
 // main login screen (customer)
 app.get('/', (req, res)=>{
     res.render('index.ejs', {
-        currentUser: req.session.currentUser
+        currentUser: req.session.currentUser,
+        currentAdmin: req.session.currentAdmin
     });
 });
 
@@ -128,10 +130,3 @@ mongoose.connection.on('open', () => {
 });
 
 
-
-
-
-
-
-// fishing lake review site
-// NYC pizza shop - pizza reviews and delivery site

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<h1>Add a New item</h1>
+	<!-- post lets you create stuff -->
+	<% if (currentAdmin) { %>
+	 <form action="/catalog" method="POST">
+            Name: <input type="text" name="name" /><br/>
+            Description: <input type="text" name="description" /><br/>
+            Img: <input type="text" name="img" /><br/>
+            Price: <input type="text" name="price" step="0.01"/><br/>
+            Qty: <input type="number" name="qty" /><br/>
+            <input type="submit" value="Create Item"/>
+     </form>
+     <% } %>
+</body>
+</html>

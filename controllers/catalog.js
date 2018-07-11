@@ -4,6 +4,7 @@ const router = express.Router();
 const User = require('../models/users.js');
 const Item = require('../models/items.js');
 const Cart = require('../models/cart.js');
+const Admin = require('../models/adminusers.js');
 
 
 const session = require('express-session');
@@ -16,6 +17,40 @@ const methodOverride = require('method-override');
 // 		});
 // 	});
 // });
+
+// delete route
+router.delete('/:id', (req, res) => {
+	Item.findByIdAndRemove(req.params.id, (error, data) => {
+		res.redirect('/catalog');
+	});
+});
+
+// new item route
+router.get('/add-item', (req, res) => {
+	res.render('admin/new.ejs', {
+		currentAdmin: req.session.currentAdmin
+	});
+});
+
+// edit route
+router.get('/:id/edit', (req, res) => {
+	Item.findById(req.params.id, (err, foundItem) => {
+		res.render(
+			'../views/admin/edit.ejs',
+			{
+				items: foundItem
+			}
+		);
+	});
+});
+
+// update route
+router.put('/:id', (req, res) => {
+	Item.findByIdAndUpdate(req.params.id, req.body, {new:true}, 
+		(err, updatedModel) => {
+			res.redirect('/catalog');
+		});
+});
 
 // accessed catalog index route
 router.get('/', (req, res) => {
@@ -38,6 +73,14 @@ router.get('/:id', (req, res) => {
 			currentCart: req.session.cart,
 			currentAdmin: req.session.currentAdmin
 		});
+	});
+});
+
+
+//create Create Route
+router.post('/', (req, res) => {
+	Item.create(req.body, (error, createdItem) => {
+		res.redirect('/catalog');
 	});
 });
 
