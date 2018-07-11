@@ -25,7 +25,7 @@ const MongoStore = require('connect-mongo')(session);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 // static files middleware
-app.use(express.static('/public'));
+app.use(express.static('public'));
 // cookie parser
 app.use(cookieParser());
 // express-session middleware
