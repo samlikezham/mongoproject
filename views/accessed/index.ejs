@@ -7,30 +7,23 @@
 </head>
 <body>
 
-	<% include ../partials/nav.ejs %>
-  <h1>
-    <% if (currentUser) { %>
-        Welcome <%=currentUser.username%>!
-    <% }  %>   
-  </h1>
+  <div class="container">
+	 <% include ../partials/nav.ejs %>
+    <div class="jumbotron">
+    <h1><i class="glyphicon glyphicon-trash" aria-hidden="true"></i> Welcome to the Crud Club.</h1>
+    <p>A subscription box company</p>
+    </div>
 
-  <h1>
-    <% if (currentAdmin) { %>
-        Welcome <%=currentAdmin.username%>!
-    <% } %>  
-  </h1>
-
-	<div class="container">
-    <h1>Catalog</h1>
-    <div>
+    <h3>Choose your style</h3>
+    <div class="row">
       <% for (let i = 0; i < items.length; i++) { %>
-      <div>
+      <div class="col-6 col-md-4">
         <a href="/catalog/<%=items[i].id%>"><img src="<%=items[i].img %>"></a><br/>
         <strong><%= items[i].name %><br/></strong>
         <strong>Price: $<em><%= items[i].price %></em><br/><br/></strong>
       </div>
       <% } %>
-      </div>
+    </div>
   </div>
 
 </body>

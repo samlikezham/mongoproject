@@ -1,22 +1,22 @@
-	<% if (currentUser) { %>
-    <nav>
-        <form action="/sessions?_method=DELETE" method="POST">
+<% if (currentUser) { %>
+        <nav class="logout">
+            <form action="/sessions?_method=DELETE" method="POST">
             <input type="submit" value="Logout"/>
-        </form>
-    </nav>
-	<% } %>
+            </form>
+        </nav>
+        </li>
+            <% } %>
 
-	<% if (currentAdmin) { %>
-    <nav>
-        <form action="/sessions?_method=DELETE" method="POST">
+        <!-- logout for admin -->
+        <% if (currentAdmin) { %>
+        <nav class="logout">
+            <form action="/sessions?_method=DELETE" method="POST">
             <input type="submit" value="Logout"/>
-        </form>
-    </nav>
-	<% } %>
+            </form>
+        </nav>
+    <% } %>
 
 
-
-<!-- container so that the 'Login' isn't butted up to the right, so you place everything inside the nav bar within this container -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
     <div class="navbar-header">
@@ -26,20 +26,29 @@
                  <span class="icon-bar"></span>
                  <span class="icon-bar"></span>
             </button>
-        <a href="#" class="navbar-brand">
+        <a href="#" class="navbar-brand logo">
         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Crud Club</a> <!-- # will not link to anything -->
     </div>
         <ul class="nav navbar-nav"> <!-- IF YOU MOVE THESE UL'S OUTSIDE OF THE COLLAPSE DIV THEN IT WILL SHOW WHEN THE WINDOW IS RESIZED -->
-            <li><a href="x">About</a></li>
-            <li><a href="x">Contact</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
         </ul>
     <div class="collapse navbar-collapse" id="bs-nav-demo"> <!-- this id is associated with data-target="#bs-nav-demo" -->
-<!--        <ul class="nav navbar-nav">
-            <li><a href="x">About</a></li>
-            <li><a href="x">Contact</a></li>
-        </ul> -->
+        </ul>
     <ul class="nav navbar-nav navbar-right"> <!-- This will make new group of content to the right side of the navbar
          -->
+         <!-- welcome admin -->
+        <li>
+        <% if (currentAdmin) { %>
+        <a>Welcome <%=currentAdmin.username%>!</a>
+        <% } %>
+        </li> 
+        <!-- welcome customer -->
+        <li>
+        <% if (currentUser) { %>
+        <a>Welcome <%=currentUser.username%>!</a>
+        <% }  %>  
+        </li>  
 
          <!-- Admin - Add Item -->
          <li>
@@ -55,8 +64,8 @@
             <% }  %>
         </span>
         )</a></li>
-
-        <li><a href="#">Logout</a></li>
+        <!-- logout for user -->
+            
     </div>
     </div>
     </ul>        

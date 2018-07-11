@@ -9,10 +9,11 @@ img {
 
 body {
 	padding-top: 70px;
+    text-align: center;
 }
 
 .jumbotron {
-	color: #2B547E;
+	color: #696969;
 	background: #ecf0f1;
 }
 
@@ -29,11 +30,17 @@ a {
     color: gray;
 }
 
-.navbar-brand {
-	color: black;
+.navbar-inverse .navbar-nav li:hover a {
+    color: black;
 }
+
+
 
 /*Got to inspect element and use more specific one*/
 .navbar-inverse .navbar-brand {
     color: gray;
+}
+
+.logout {
+    padding: 0 0 15px 92%;
 }
