@@ -7,3 +7,33 @@ img {
     background-size:     cover;
 }
 
+body {
+	padding-top: 70px;
+}
+
+.jumbotron {
+	color: #2B547E;
+	background: #ecf0f1;
+}
+
+.navbar-inverse {
+	background: white;
+}
+
+a {
+	color: black;
+}
+
+/*This is 10x more specific than just the A tag*/
+.navbar-inverse .navbar-nav>li>a {
+    color: gray;
+}
+
+.navbar-brand {
+	color: black;
+}
+
+/*Got to inspect element and use more specific one*/
+.navbar-inverse .navbar-brand {
+    color: gray;
+}

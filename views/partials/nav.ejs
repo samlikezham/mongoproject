@@ -14,16 +14,52 @@
     </nav>
 	<% } %>
 
-	<nav>
-		<a href="/catalog/add-to-cart/">My Cart (
-		<span class="cart">
-			<% if (currentCart) { %>
-    		<%= currentCart.totalQty %>
- 		 <% }  %>
- 		</span>
- 	)</a>
-	</nav>
 
-	<% if (currentAdmin) { %>
-        <a href="/catalog/add-item">Add a New Item</a>
-    <% } %>  
+
+<!-- container so that the 'Login' isn't butted up to the right, so you place everything inside the nav bar within this container -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+    <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false"> <!-- EVERYTHING INSIDE OF THIS BUTTON WILL BE INSIDE THE HAMBURGER WHEN YOU MINIMIZE/RESIZE -->
+                 <span class="sr-only">Toggle navigation</span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+            </button>
+        <a href="#" class="navbar-brand">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Crud Club</a> <!-- # will not link to anything -->
+    </div>
+        <ul class="nav navbar-nav"> <!-- IF YOU MOVE THESE UL'S OUTSIDE OF THE COLLAPSE DIV THEN IT WILL SHOW WHEN THE WINDOW IS RESIZED -->
+            <li><a href="x">About</a></li>
+            <li><a href="x">Contact</a></li>
+        </ul>
+    <div class="collapse navbar-collapse" id="bs-nav-demo"> <!-- this id is associated with data-target="#bs-nav-demo" -->
+<!--        <ul class="nav navbar-nav">
+            <li><a href="x">About</a></li>
+            <li><a href="x">Contact</a></li>
+        </ul> -->
+    <ul class="nav navbar-nav navbar-right"> <!-- This will make new group of content to the right side of the navbar
+         -->
+
+         <!-- Admin - Add Item -->
+         <li>
+            <% if (currentAdmin) { %>
+            <a href="/catalog/add-item">Add a New Item</a>
+            <% } %> 
+         </li>
+         <!-- Cart -->
+         <li><a href="#">My Cart (
+        <span class="cart">
+            <% if (currentCart) { %>
+            <%= currentCart.totalQty %>
+            <% }  %>
+        </span>
+        )</a></li>
+
+        <li><a href="#">Logout</a></li>
+    </div>
+    </div>
+    </ul>        
+    </nav>
+
+
