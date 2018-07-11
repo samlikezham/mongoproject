@@ -17,8 +17,6 @@ const methodOverride = require('method-override');
 // 	});
 // });
 
-
-
 // accessed catalog index route
 router.get('/', (req, res) => {
 	Item.find({}, (err, allItems) => {

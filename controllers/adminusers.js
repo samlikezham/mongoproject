@@ -17,5 +17,7 @@ router.post('/', (req, res) => {
 module.exports = router;
 
 
-// finish admin views to show Catalog upon login
+// finish admin views to show Catalog upon login ( maybe redirecting to catalog page upon login? Then use Josephs idea <% if (currentAdmin) %> show delete/edit?
 // allow admin to edit/delete items
+// STYLE pages
+// FIX heroku
