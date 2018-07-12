@@ -66,37 +66,37 @@ app.get('/seed', async (req, res) => {
     [
       {
         name: 'The Professional',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         img: 'https://i.imgur.com/zRjdGAL.jpg',
         price: 125.95,
         qty: 1000
       }, {
         name: 'The Hipster',
-        description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse.',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         img: 'https://i.imgur.com/9q9UrHw.jpg',
         price: 75.95,
         qty: 1000
       }, {
         name: 'The College Student',
-        description: 'Excepteur sint occaecat cupidatat non proident',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         img: 'https://i.imgur.com/ljOObZa.jpg',
         price: 10.95,
         qty: 1000
       }, {
         name: 'Just Watches',
-        description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse.',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         img: 'https://i.imgur.com/QngMFLM.jpg',
         price: 29.95,
         qty: 1000
       }, {
         name: 'Shoes Only',
-        description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse.',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         img: 'https://i.imgur.com/2G56ftf.jpg',
         price: 39.95,
         qty: 1000
       }, {
         name: 'Hats',
-        description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse.',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         img: 'https://i.imgur.com/wEqhQ44.jpg',
         price: 17.95,
         qty: 1000
