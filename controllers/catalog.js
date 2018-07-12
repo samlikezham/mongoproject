@@ -28,7 +28,9 @@ router.delete('/:id', (req, res) => {
 // new item route
 router.get('/add-item', (req, res) => {
 	res.render('admin/new.ejs', {
-		currentAdmin: req.session.currentAdmin
+		currentAdmin: req.session.currentAdmin,
+		currentUser: req.session.currentUser,
+		currentCart: req.session.cart
 	});
 });
 
@@ -38,7 +40,10 @@ router.get('/:id/edit', (req, res) => {
 		res.render(
 			'../views/admin/edit.ejs',
 			{
-				items: foundItem
+				items: foundItem,
+				currentAdmin: req.session.currentAdmin,
+				currentUser: req.session.currentUser,
+				currentCart: req.session.cart
 			}
 		);
 	});

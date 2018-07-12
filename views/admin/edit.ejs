@@ -2,9 +2,13 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<% include ../partials/head.ejs %>
 	<title></title>
 </head>
 <body>
+	<% include ../partials/nav.ejs %>
+
+	<a href="/catalog/<%=items.id%>">Go Back</a>
 	<h1>Edit Item</h1>
 	<form action="/catalog/<%=items.id%>?_method=PUT" method="POST">
 		<strong>Name:</strong> <input type="text" name="name" value="<%=items.name%>"><br/>
