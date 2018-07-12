@@ -128,6 +128,7 @@ app.get('/admin', (req, res) => {
 	});
 });
 
+
 //fix this - Should redirect back to home if user is not logged in
 // app.get('/catalog/', (req, res) => {
 // 	if (req.session.currentUser) {
