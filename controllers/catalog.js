@@ -38,8 +38,7 @@ router.get('/add-item', (req, res) => {
 router.get('/:id/edit', (req, res) => {
 	Item.findById(req.params.id, (err, foundItem) => {
 		res.render(
-			'../views/admin/edit.ejs',
-			{
+			'../views/admin/edit.ejs', {
 				items: foundItem,
 				currentAdmin: req.session.currentAdmin,
 				currentUser: req.session.currentUser,
@@ -53,7 +52,7 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
 	Item.findByIdAndUpdate(req.params.id, req.body, {new:true}, 
 		(err, updatedModel) => {
-			res.redirect('/catalog');
+			res.redirect('/catalog/' + req.params.id);
 		});
 });
 
@@ -108,13 +107,13 @@ router.get('/add-to-cart/:id', (req, res) => {
 
 
 //buy route
-// router.put('/:id/buy', (req, res) => {
-// 	Item.update(
-// 		{_id: req.params.id}, 
-// 		{$inc: {qty: -1}}, (error, foundProduct) => {
-// 			res.redirect('/catalog/' + req.params.id)
-// 		});
-// });
+router.put('/:id/buy', (req, res) => {
+	Item.update(
+		{_id: req.params.id}, 
+		{$inc: {qty: -1}}, (error, foundProduct) => {
+			res.redirect('/catalog/' + req.params.id)
+		});
+});
 
 
 

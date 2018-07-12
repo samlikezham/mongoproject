@@ -64,5 +64,22 @@ li {
     margin-bottom: 10px;
 }
 
+.adminLogin a {
+    color: black;
+    border: 1px solid black;
+    padding: 2px;
+    border-radius: 3px;
+}
+
+.showImg {
+    padding: 70px;
+}
 
 
+.addToCart a {
+    margin-top: 100px;
+}
+
+.itemDescription {
+    text-align: left;
+}

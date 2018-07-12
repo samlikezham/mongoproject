@@ -128,14 +128,14 @@ app.get('/admin', (req, res) => {
 	});
 });
 
-//FIX THIS - Should redirect back to home if user is not logged in
-app.get('/catalog', (req, res) => {
-	if (req.session.currentUser) {
-		res.redirect('/catalog');
-	} else {
-		res.redirect('/');
-	}
-});
+//fix this - Should redirect back to home if user is not logged in
+// app.get('/catalog/', (req, res) => {
+// 	if (req.session.currentUser) {
+// 		res.redirect('/catalog/');
+// 	} else {
+// 		res.redirect('/');
+// 	}
+// });
 
 
 app.listen(PORT, () => {

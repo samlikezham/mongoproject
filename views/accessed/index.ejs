@@ -10,8 +10,8 @@
   <div class="container">
 	 <% include ../partials/nav.ejs %>
     <div class="jumbotron">
-    <h1><i class="glyphicon glyphicon-trash" aria-hidden="true"></i> Welcome to the CrudClub.</h1>
-    <p>A subscription box company</p>
+    <h1><i class="glyphicon glyphicon-trash" aria-hidden="true"></i> Welcome to the CrudClub</h1>
+    <p>A subscription box company.</p>
     </div>
 
     <h3>Choose your style</h3>
@@ -20,7 +20,7 @@
       <div class="col-6 col-md-4">
         <a href="/catalog/<%=items[i].id%>"><img src="<%=items[i].img %>"></a><br/>
         <strong><%= items[i].name %><br/></strong>
-        <strong>Price: $<em><%= items[i].price %></em><br/><br/></strong>
+        <strong>$<em><%= items[i].price %></em><br/><br/></strong>
       </div>
       <% } %>
     </div>

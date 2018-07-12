@@ -23,23 +23,32 @@
 				</form>
 			</span>
 		<% } %>
-
-		<img src="<%=items.img%>"><br/><br/>
+		<div class="row showImg">
+			<div class="col-sm-6">
+				<img src="<%=items.img%>"><br/><br/>
+			</div>
+			<div class="col-sm-6">
+		<div class="itemDescription">
 		<strong>Description:</strong>
 		<%= items.description %><br/>
 		<strong>Price:</strong>
 		$<%= items.price %><br/>
 		<strong>Quantity Remaining:</strong>
 		<%= items.qty %>
-	</div>
 
 		<% if (items.qty > 0){ %>
           <form action='/catalog/<%=items.id%>/buy?_method=PUT' method='POST'>
-          	<a href="/catalog/add-to-cart/<%=items.id%>" class="btn" role="button">Add To Cart</a>
+          	<span class="addToCart"><a href="/catalog/add-to-cart/<%=items.id%>" class="btn" role="button">Add To Cart</a></span>
           </form>
           <% } else { %>
             <button>Out of Stock</button>
         <% } %>
+			
+        </div>
+	</div>
+</div>
+
+	
             
           
 </body>
