@@ -89,21 +89,34 @@ router.post('/', (req, res) => {
 });
 
 
-//cart/checkout route
+//add-to-cart get route
 router.get('/add-to-cart/:id', (req, res) => {
 	let productId = req.params.id;
+	// if the cart exists then pass in old cart, otherwise pass in empty object
 	let cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
 
 	Item.findById(productId, (err, product) => {
 		if (err) {
 			return res.redirect('/catalog/');
 		}
+		// if no errors then add product to cart
 		cart.add(product, product.id);
 		req.session.cart = cart;
 		console.log(req.session.cart);
 		res.redirect('/catalog/' + req.params.id);
 	});
 });
+
+
+// shopping cart route
+// router.get('/shopping-cart/', (req, res) => {
+// 	if (!req.session.cart) {
+// 		return res.render('catalog/shopping-cart', {products: null});
+// 	}
+// 	let cart = new Cart(req.session.cart);
+// 	res.render('catalog/shopping-cart' , {products: cart.generateArray(), totalPrice: cart.totalPrice});
+// });
+
 
 
 //buy route
