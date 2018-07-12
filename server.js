@@ -65,23 +65,23 @@ app.get('/seed', async (req, res) => {
   const newItem =
     [
       {
-        name: 'Top',
-        description: 'Men\'s polo top',
-        img: 'https://i.imgur.com/mdFVn1p.jpg',
-        price: 5,
-        qty: 99
+        name: 'The Professional',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        img: 'https://i.imgur.com/zRjdGAL.jpg',
+        price: 125.95,
+        qty: 1000
       }, {
-        name: 'Jeans',
-        description: 'Men\'s denim',
-        img: 'https://i.imgur.com/R3AKVgt.jpg',
-        price: 25,
-        qty: 0
+        name: 'The Hipster',
+        description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse.',
+        img: 'https://i.imgur.com/9q9UrHw.jpg',
+        price: 75.95,
+        qty: 1000
       }, {
-        name: 'Shoes',
-        description: 'Men\'s shoes',
-        img: 'https://i.imgur.com/Hlt2pwL.jpg',
-        price: 7000,
-        qty: 1
+        name: 'The College Student',
+        description: 'Excepteur sint occaecat cupidatat non proident',
+        img: 'https://i.imgur.com/ljOObZa.jpg',
+        price: 10.95,
+        qty: 1000
       }
     ]
 
