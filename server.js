@@ -82,6 +82,24 @@ app.get('/seed', async (req, res) => {
         img: 'https://i.imgur.com/ljOObZa.jpg',
         price: 10.95,
         qty: 1000
+      }, {
+        name: 'Just Watches',
+        description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse.',
+        img: 'https://i.imgur.com/QngMFLM.jpg',
+        price: 29.95,
+        qty: 1000
+      }, {
+        name: 'Shoes Only',
+        description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse.',
+        img: 'https://i.imgur.com/2G56ftf.jpg',
+        price: 39.95,
+        qty: 1000
+      }, {
+        name: 'Hats',
+        description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse.',
+        img: 'https://i.imgur.com/wEqhQ44.jpg',
+        price: 17.95,
+        qty: 1000
       }
     ]
 

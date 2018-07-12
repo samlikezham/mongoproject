@@ -15,7 +15,16 @@
 
 	<div class="container">
 		<h3><%= items.name %><br/></h3>
-		<img src="<%=items.img%>"><br/>
+
+		<% if (currentAdmin) { %> 
+           <span class="edit"><a href="/catalog/<%=items.id%>/edit" class="btn">Edit</a></span>
+        	<span class="delete"><form action="/catalog/<%=items.id%>?_method=DELETE" method="POST">
+				<input type="submit" value="DELETE"/>
+				</form>
+			</span>
+		<% } %>
+
+		<img src="<%=items.img%>"><br/><br/>
 		<strong>Description:</strong>
 		<%= items.description %><br/>
 		<strong>Price:</strong>
@@ -24,19 +33,14 @@
 		<%= items.qty %>
 	</div>
 
-	<% if (items.qty > 0){ %>
+		<% if (items.qty > 0){ %>
           <form action='/catalog/<%=items.id%>/buy?_method=PUT' method='POST'>
           	<a href="/catalog/add-to-cart/<%=items.id%>" class="btn" role="button">Add To Cart</a>
           </form>
           <% } else { %>
             <button>Out of Stock</button>
-            <% } %>
+        <% } %>
             
-           <% if (currentAdmin) { %> 
-            <a href="/catalog/<%=items.id%>/edit">Edit</a>
-        	<form action="/catalog/<%=items.id%>?_method=DELETE" method="POST">
-				<input type="submit" value="DELETE"/>
-			</form>
-			<% } %>
+          
 </body>
 </html>

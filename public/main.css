@@ -49,7 +49,20 @@ li {
     list-style-type: none;
 }
 
+.btn {
+    color: #4682B4;
+    border: 1px solid #4682B4;
+}
 
+.edit a {
+    color: red;
+    border: 1px solid red;
+    margin-bottom: 10px;
+}
+
+.delete input {
+    margin-bottom: 10px;
+}
 
 
 
